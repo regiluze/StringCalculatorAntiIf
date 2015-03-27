@@ -56,6 +56,8 @@ public class StringCalculatorTest {
 
     private class StringCalculator {
 
+        private String DEFAULT_DELIMITER = ",";
+
         public int add(String numbers) {
             int result = 0;
             for (String num : splitNumbers(numbers)){
@@ -69,8 +71,13 @@ public class StringCalculatorTest {
         }
 
         private String[] splitNumbers(String numbers){
-            String formated_numbers = numbers.replaceAll("\n",",");
-            return formated_numbers.split(",");
+            String delimiter = DEFAULT_DELIMITER;
+            if (numbers.startsWith("//")){
+               delimiter = numbers.substring(2,3);
+                numbers = numbers.substring(4);
+            }
+            String formated_numbers = numbers.replaceAll("\n",delimiter);
+            return formated_numbers.split(delimiter);
 
         }
 
