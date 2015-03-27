@@ -13,17 +13,26 @@ public class StringCalculator {
     public int add(String numbers) {
         int result = 0;
         for (String num : splitNumbers(numbers)){
-            try {
-                int number = Integer.valueOf(num).intValue();
-                if (number < 0){
-                    throw new NegativeNumbersException();
-                }
-                result += number;
-            }catch (NumberFormatException ex){
-                break;
-            }
+            result += checkNumber(num);
         }
         return result;
+    }
+
+    private int checkNumber(String num){
+        int result = 0;
+        try {
+            int number = Integer.valueOf(num).intValue();
+            checkNegativeNumbers(number);
+            result = number;
+        }catch (NumberFormatException ex){
+        }
+        return result;
+    }
+
+    private void checkNegativeNumbers(int num){
+        if (num < 0){
+            throw new NegativeNumbersException();
+        }
     }
 
     private String[] splitNumbers(String numbers){
