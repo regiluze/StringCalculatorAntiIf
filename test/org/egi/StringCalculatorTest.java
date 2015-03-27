@@ -50,9 +50,7 @@ public class StringCalculatorTest {
 
         public int add(String numbers) {
             int result = 0;
-            String formated_numbers = numbers.replaceAll("\n",",");
-            String[] nums = formated_numbers.split(",");
-            for (String num : nums){
+            for (String num : splitNumbers(numbers)){
                 try {
                     result += Integer.valueOf(num).intValue();
                 }catch (NumberFormatException ex){
@@ -60,6 +58,12 @@ public class StringCalculatorTest {
                 }
             }
             return result;
+        }
+
+        private String[] splitNumbers(String numbers){
+            String formated_numbers = numbers.replaceAll("\n",",");
+            return formated_numbers.split(",");
+
         }
 
     }
