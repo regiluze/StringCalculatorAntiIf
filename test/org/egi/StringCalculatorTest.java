@@ -44,12 +44,13 @@ public class StringCalculatorTest {
 
         public int add(String numbers) {
             int result = 0;
-            if (numbers.isEmpty()){
-                return result;
-            }
             String[] nums = numbers.split(",");
             for (String num : nums){
-                result += Integer.valueOf(num).intValue();
+                try {
+                    result += Integer.valueOf(num).intValue();
+                }catch (NumberFormatException ex){
+                    break;
+                }
             }
             return result;
         }
