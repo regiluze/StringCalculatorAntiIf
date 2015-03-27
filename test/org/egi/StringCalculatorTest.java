@@ -19,6 +19,15 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void should_return_one_when_add_input_is_one(){
+
+        StringCalculator cal = new StringCalculator();
+
+        assertEquals(1, cal.add("1"));
+
+    }
+
     private class StringCalculator {
         public int add(String numbers) {
             return 0;
