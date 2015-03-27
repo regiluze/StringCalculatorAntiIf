@@ -32,6 +32,14 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void should_return_5_when_add_input_is_2_and_3_with_coma(){
+
+        assertEquals(5, cal.add("2,3"));
+
+    }
+
+
     private class StringCalculator {
         public int add(String numbers) {
             if (numbers.isEmpty()){
