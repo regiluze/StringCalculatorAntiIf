@@ -50,7 +50,8 @@ public class StringCalculatorTest {
 
         public int add(String numbers) {
             int result = 0;
-            String[] nums = numbers.split(",");
+            String formated_numbers = numbers.replaceAll("\n",",");
+            String[] nums = formated_numbers.split(",");
             for (String num : nums){
                 try {
                     result += Integer.valueOf(num).intValue();
