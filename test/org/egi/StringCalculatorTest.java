@@ -1,5 +1,6 @@
 package org.egi;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,10 +11,15 @@ import static org.junit.Test.*;
  */
 public class StringCalculatorTest {
 
+    StringCalculator cal;
+
+    @Before
+    public void setup(){
+        cal = new StringCalculator();
+    }
+
     @Test
     public void should_return_zero_when_add_input_is_empty_string(){
-
-        StringCalculator cal = new StringCalculator();
 
         assertEquals(0, cal.add(""));
 
@@ -21,8 +27,6 @@ public class StringCalculatorTest {
 
     @Test
     public void should_return_one_when_add_input_is_one(){
-
-        StringCalculator cal = new StringCalculator();
 
         assertEquals(1, cal.add("1"));
 
