@@ -46,6 +46,14 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void should_return_6_when_add_input_is_1_new_line_2_and_3_with_coma_and_different_delimiter(){
+
+        assertEquals(6, cal.add("//;\n3;3"));
+
+    }
+
+
     private class StringCalculator {
 
         public int add(String numbers) {
