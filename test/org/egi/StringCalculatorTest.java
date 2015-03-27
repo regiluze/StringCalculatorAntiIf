@@ -1,5 +1,8 @@
 package org.egi;
 
+import org.egi.calculator.StringCalculator;
+import org.egi.format.InputFormatFactory;
+import org.egi.format.StringNumbersInput;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -54,32 +57,4 @@ public class StringCalculatorTest {
     }
 
 
-    private class StringCalculator {
-
-        private String DEFAULT_DELIMITER = ",";
-
-        public int add(String numbers) {
-            int result = 0;
-            for (String num : splitNumbers(numbers)){
-                try {
-                    result += Integer.valueOf(num).intValue();
-                }catch (NumberFormatException ex){
-                    break;
-                }
-            }
-            return result;
-        }
-
-        private String[] splitNumbers(String numbers){
-            String delimiter = DEFAULT_DELIMITER;
-            if (numbers.startsWith("//")){
-               delimiter = numbers.substring(2,3);
-                numbers = numbers.substring(4);
-            }
-            String formated_numbers = numbers.replaceAll("\n",delimiter);
-            return formated_numbers.split(delimiter);
-
-        }
-
-    }
 }
