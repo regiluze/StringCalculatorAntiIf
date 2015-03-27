@@ -1,6 +1,7 @@
 package org.egi;
 
 import org.egi.calculator.StringCalculator;
+import org.egi.exceptions.NegativeNumbersException;
 import org.egi.format.InputFormatFactory;
 import org.egi.format.StringNumbersInput;
 import org.junit.Before;
@@ -53,6 +54,13 @@ public class StringCalculatorTest {
     public void should_return_6_when_add_input_is_1_new_line_2_and_3_with_coma_and_different_delimiter(){
 
         assertEquals(6, cal.add("//;\n3;3"));
+
+    }
+
+    @Test(expected = NegativeNumbersException.class)
+    public void should_throw_an_exception_when_there_are_negative_numbers(){
+
+        assertEquals(6, cal.add("//;\n-3;3"));
 
     }
 
