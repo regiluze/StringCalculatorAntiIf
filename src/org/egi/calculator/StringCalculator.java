@@ -1,5 +1,6 @@
 package org.egi.calculator;
 
+import org.egi.exceptions.NegativeNumbersException;
 import org.egi.format.InputFormatFactory;
 import org.egi.format.StringNumbersInput;
 
@@ -13,7 +14,11 @@ public class StringCalculator {
         int result = 0;
         for (String num : splitNumbers(numbers)){
             try {
-                result += Integer.valueOf(num).intValue();
+                int number = Integer.valueOf(num).intValue();
+                if (number < 0){
+                    throw new NegativeNumbersException();
+                }
+                result += number;
             }catch (NumberFormatException ex){
                 break;
             }
