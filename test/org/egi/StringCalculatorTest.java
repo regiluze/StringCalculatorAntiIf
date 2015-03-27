@@ -39,6 +39,12 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void should_return_6_when_add_input_is_1_new_line_2_and_3_with_coma(){
+
+        assertEquals(6, cal.add("1\n2,3"));
+
+    }
 
     private class StringCalculator {
 
