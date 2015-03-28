@@ -9,14 +9,18 @@ import org.egi.format.StringNumbersInput;
  */
 public class StringCalculator {
 
-    private NegativeChecker negativeChecker = new NegativeChecker();
+    private NegativeChecker _negativeChecker;
+
+    public StringCalculator(NegativeChecker negativeChecker){
+        _negativeChecker = negativeChecker;
+    }
 
     public int add(String numbers) {
         int result = 0;
         for (String num : splitNumbers(numbers)){
             result += checkNumber(num);
         }
-        negativeChecker.apply();
+        _negativeChecker.apply();
         return result;
     }
 
@@ -24,7 +28,7 @@ public class StringCalculator {
         int result = 0;
         try {
             int number = Integer.valueOf(num).intValue();
-            negativeChecker.add(number);
+            _negativeChecker.add(number);
             result = number;
         }catch (NumberFormatException ex){
         }

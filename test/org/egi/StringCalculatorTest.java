@@ -1,5 +1,6 @@
 package org.egi;
 
+import org.egi.calculator.NegativeChecker;
 import org.egi.calculator.StringCalculator;
 import org.egi.exceptions.NegativeNumbersException;
 import org.junit.Before;
@@ -16,7 +17,7 @@ public class StringCalculatorTest {
 
     @Before
     public void setup(){
-        cal = new StringCalculator();
+        cal = new StringCalculator(new NegativeChecker());
     }
 
     @Test
