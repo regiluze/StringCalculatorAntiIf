@@ -1,6 +1,6 @@
 package org.egi;
 
-import org.egi.calculator.NegativeChecker;
+import org.egi.calculator.NumberChecker;
 import org.egi.calculator.StringCalculator;
 import org.egi.exceptions.NegativeNumbersException;
 import org.junit.Before;
@@ -17,7 +17,7 @@ public class StringCalculatorTest {
 
     @Before
     public void setup(){
-        cal = new StringCalculator(new NegativeChecker());
+        cal = new StringCalculator(new NumberChecker());
     }
 
     @Test
@@ -70,6 +70,13 @@ public class StringCalculatorTest {
         }catch (Exception ex){
             assertEquals("[-3,-3]",ex.getLocalizedMessage());
         }
+
+    }
+
+    @Test
+    public void should_ignore_numbers_bigger_then_1000(){
+
+        assertEquals(3, cal.add("//;\n1003;3"));
 
     }
 

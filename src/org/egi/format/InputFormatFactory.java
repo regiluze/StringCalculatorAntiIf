@@ -10,7 +10,6 @@ public class InputFormatFactory{
             return new DifferentDelimiterInput(numbers);
         }
         return new DefaultInput(numbers);
-
     }
 
 }

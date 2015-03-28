@@ -9,10 +9,10 @@ import org.egi.format.StringNumbersInput;
  */
 public class StringCalculator {
 
-    private NegativeChecker _negativeChecker;
+    private NumberChecker _checker;
 
-    public StringCalculator(NegativeChecker negativeChecker){
-        _negativeChecker = negativeChecker;
+    public StringCalculator(NumberChecker checker){
+        _checker = checker;
     }
 
     public int add(String numbers) {
@@ -20,23 +20,22 @@ public class StringCalculator {
         for (String num : splitNumbers(numbers)){
             result += checkNumber(num);
         }
-        _negativeChecker.apply();
+        _checker.negative_numbers();
         return result;
     }
 
     private int checkNumber(String num){
-        int result = 0;
         try {
             int number = Integer.valueOf(num).intValue();
-            _negativeChecker.add(number);
-            result = number;
+            _checker.negative(number);
+            return _checker.valid(number);
         }catch (NumberFormatException ex){
+            return 0;
         }
-        return result;
     }
 
     private String[] splitNumbers(String numbers){
-        StringNumbersInput input = new InputFormatFactory(). get(numbers);
+        StringNumbersInput input = new InputFormatFactory().get(numbers);
         String formated_numbers = input.getNumbers();
         return formated_numbers.split(input.getDelimiter());
     }
