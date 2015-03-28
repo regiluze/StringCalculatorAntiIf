@@ -4,17 +4,22 @@ import org.egi.exceptions.NegativeNumbersException;
 import org.egi.format.InputFormatFactory;
 import org.egi.format.StringNumbersInput;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by regiluze on 27/3/15.
  */
 public class StringCalculator {
 
+    private List<Integer> negatives = new ArrayList<Integer>();
 
     public int add(String numbers) {
         int result = 0;
         for (String num : splitNumbers(numbers)){
             result += checkNumber(num);
         }
+        checkNegativeNumbers();
         return result;
     }
 
@@ -22,16 +27,18 @@ public class StringCalculator {
         int result = 0;
         try {
             int number = Integer.valueOf(num).intValue();
-            checkNegativeNumbers(number);
+            if (number < 0){
+                negatives.add(number);
+            }
             result = number;
         }catch (NumberFormatException ex){
         }
         return result;
     }
 
-    private void checkNegativeNumbers(int num){
-        if (num < 0){
-            throw new NegativeNumbersException();
+    private void checkNegativeNumbers(){
+        if (negatives.size() > 0){
+            throw new NegativeNumbersException(negatives);
         }
     }
 

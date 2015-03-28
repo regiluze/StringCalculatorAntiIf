@@ -64,5 +64,15 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void should_include_negative_numbers_in_exception_message_when_there_are_negative_numbers(){
+
+        try{
+            assertEquals(6, cal.add("//;\n-3;-3"));
+        }catch (Exception ex){
+            assertEquals("[-3,-3]",ex.getLocalizedMessage());
+        }
+
+    }
 
 }
