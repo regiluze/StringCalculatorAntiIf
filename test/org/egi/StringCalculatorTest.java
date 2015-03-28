@@ -2,13 +2,10 @@ package org.egi;
 
 import org.egi.calculator.StringCalculator;
 import org.egi.exceptions.NegativeNumbersException;
-import org.egi.format.InputFormatFactory;
-import org.egi.format.StringNumbersInput;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.junit.Test.*;
 
 /**
  * Created by regiluze on 27/3/15.
